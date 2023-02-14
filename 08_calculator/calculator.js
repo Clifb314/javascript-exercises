@@ -8,50 +8,59 @@ const subtract = function(a, b) {
 
 };
 
-const sum = function(...arg) {
-  if (arg[0] === undefined) {return 0};
+const sum = function(sumArr) {
+  if (sumArr[0] === undefined) {return 0};
   let sum = 0;
   // convert from string to integer
-  arg.forEach(num => {
-    num = Number(num)
-  })
-  arg.forEach(num => {
-      sum += num;
-  })
-  return sum;
+  
+  let numArr = sumArr.map(Number)
+  
+
+  return numArr.reduce((sum, currVal) => sum + currVal);
 };
 
-const multiply = function(...arg) {
-  if (arg[0] === undefined) {return 0};
-  let mult = 1;
-  arg.forEach(num => {
-    num = Number(num)
-  })
-  arg.forEach(num => {
-      mult *= num;
-  })
+const multiply = function(multArr) {
+  if (multArr[0] === undefined) {return multArr};
+  
+  let intArr = multArr.map(Number)
 
+  return intArr.reduce((total, currVal) => total * currVal)
 };
+
 
 const power = function(a, b) {
   if (b === 1) {return a}
 
-  for (let i = 2; i < b; i++) {
-      a *= a;
+  let answer = a
+  for (let i = 2; i <= b; i++) {
+      answer *= a;
   }
-  return a
+  return answer
 };
 
 const factorial = function(a) {
   if (a < 2) {return 1}
 
-  factArr =
-
-  for (i = 1; i < a; i++) {
-      i *= (i+1)
+  factArr = [1];
+  //populate an array with sequential numbs up to a
+  for (let i = 2; i <= a; i++) {
+    factArr.push(i)
   }
-  return i
+
+  //use reducer function to multiply them
+  let total = 1;
+  let answer = factArr.reduce((total, currVal) => total * currVal)
+
+  return answer
+
+  //for (i = 1; i < a; i++) {
+  //    i *= (i+1)
+  //}
+  //return i
 };
+
+
+
 
 // Do not edit below this line
 module.exports = {
